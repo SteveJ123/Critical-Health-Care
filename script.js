@@ -21,70 +21,68 @@ var rpRange = document.getElementById("rpRange");
 // Update the current slider value (each time you drag the slider handle)
 driRange.oninput = function () {
     desiredReplacementIncome.value = driRange.value;
-    console.log("test");
+
 }
 oheRange.oninput = function () {
     OutofPocketHealthcareExpenses.value = oheRange.value;
-    console.log("test");
+
 }
 hmeRange.oninput = function () {
     homeModificationExpenses.value = hmeRange.value;
-    console.log("test");
+
 }
 mheRange.oninput = function () {
     medicalHomecareExpenses.value = mheRange.value;
-    console.log("test");
+
 }
 oeRange.oninput = function () {
     otherExpenses.value = oeRange.value;
-    console.log("test");
+
 }
 rpRange.oninput = function () {
     recoveryPeriod.value = rpRange.value;
-    console.log("test");
+
 }
 
 
 function calculate() {
 
 
+    let myChart = document.getElementById('myChart').getContext('2d');
 
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
 
-    // Construct options first and then pass it as a parameter
-    var options1 = {
-        animationEnabled: true,
-        title: {
-            text: ""
-        },
-        data: [{
-            type: "column", //change it to line, area, bar, pie, etc
-            legendText: "", //Try Resizing with the handle to the bottom right
-            showInLegend: true,
-            dataPoints: [
-                {
-                    y: (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
-                        Number(homeModificationExpenses.value) + Number(medicalHomecareExpenses.value)) - Number(otherExpenses.value)
-                },
-                {
-                    y: (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
-                        Number(homeModificationExpenses.value)) * 1.2 / Number(recoveryPeriod.value)
-                }
+    let first = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
+        Number(homeModificationExpenses.value) + Number(medicalHomecareExpenses.value)) - Number(otherExpenses.value);
+    let second = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
+        Number(homeModificationExpenses.value)) * 1.2 / Number(recoveryPeriod.value);
 
-            ]
-        }]
+    let massPopChart = new Chart(myChart, {
+        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['cost today', 'cost in 10 years'],
+            datasets: [{
+                label: 'Estimated cost today',
+                data: [
+                    first,
+                    second
+                ],
+                //backgroundColor:'green',
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)'
 
-    };
-    console.log(Number(desiredReplacementIncome.value), Number(OutofPocketHealthcareExpenses.value), Number(homeModificationExpenses.value), Number(otherExpenses.value));
-
-    $("#resizable").resizable({
-        create: function (event, ui) {
-            //Create chart.
-            $("#chartContainer1").CanvasJSChart(options1);
-        },
-        resize: function (event, ui) {
-            //Update chart size according to its container size.
-            $("#chartContainer1").CanvasJSChart().render();
+                ],
+                borderWidth: 1,
+                borderColor: '#777',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }]
         }
+
     });
 }
 
