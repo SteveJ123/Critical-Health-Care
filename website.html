@@ -6,7 +6,7 @@
 
         <title> Health Calculator </title>
 
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="Website.css">
 
     </head>
@@ -16,49 +16,53 @@
         <h1>Critical Illness Insurance Calculator</h1>
         <p>Adjust the sliders to estimate the coverage amount you may need.</p>
 
-        <div class="parent">
+
+        <div class="container">
 
             <div class="container1">
 
                 <div class="slidecontainer">
-                    <label>Desired replacement income (after-tax)</label></br>
-                    <input type="number" id="dri" /></br>
-                    <input type="range" min="1" max="10000" value="50" class="slider" id="driRange">
+
+                    <label class="control-label">Desired replacement income (after-tax)</label></br>
+                    <input type="number" id="dri" value="50" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="10000" value="50" class="custom-range" class="slider" id="driRange">
+
+
                 </div>
                 <div class="slidecontainer">
-                    <label>Out-of-pocket healthcare expenses</label></br>
-                    <input type="number" id="ohe" /></br>
-                    <input type="range" min="1" max="10000" value="50" class="slider" id="oheRange">
+                    <label class="control-label">Out-of-pocket healthcare expenses</label></br>
+                    <input type="number" id="ohe" value="50" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="10000" value="50" class="custom-range" class="slider" id="oheRange">
                 </div>
                 <div class="slidecontainer">
-                    <label>Home modification expenses</label></br>
-                    <input type="number" id="hme" /></br>
-                    <input type="range" min="1" max="10000" value="50" class="slider" id="hmeRange">
+                    <label class="control-label">Home modification expenses</label></br>
+                    <input type="number" id="hme" value="50" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="10000" value="50" class="custom-range" class="slider" id="hmeRange">
                 </div>
                 <div class="slidecontainer">
-                    <label>Medical homecare expenses</label></br>
-                    <input type="number" id="mhe" /></br>
-                    <input type="range" min="1" max="10000" value="50" class="slider" id="mheRange">
+                    <label class="control-label">Medical homecare expenses</label></br>
+                    <input type="number" id="mhe" value="50" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="10000" value="50" class="custom-range" class="slider" id="mheRange">
                 </div>
                 <div class="slidecontainer">
-                    <label>Other expenses (transport, childcare, etc)</label></br>
-                    <input type="number" id="oe" /></br>
-                    <input type="range" min="1" max="10000" value="50" class="slider" id="oeRange">
+                    <label class="control-label">Other expenses (transport, childcare, etc)</label></br>
+                    <input type="number" id="oe" value="50" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="10000" value="50" class="custom-range" class="slider" id="oeRange">
                 </div>
 
             </div>
             <div class="container2">
 
                 <div class="rightsideslidecontainer">
-                    <label>Recovery period</label>
-                    <input type="number" id="rp" /></br>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="rpRange">
+                    <label class="control-label">Recovery period</label>
+                    <input type="number" id="rp" value="10" class="form-control" class="form-control" onchange="calculate()" /></br>
+                    <input type="range" min="1" max="100" value="50" class="custom-range" class="slider" id="rpRange">
                 </div>
 
                 <div id="resizable" style="height: 370px;border:1px solid gray;">
                     <div id="chartContainer1" style="height: 100%; width: 100%;"></div>
                 </div>
-                <button onclick="calculate()">Click To Calculate </button>
+                <button class="btn btn-primary" onclick="calculate()">Click To Calculate </button>
 
             </div>
 

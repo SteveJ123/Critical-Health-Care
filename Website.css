@@ -1,4 +1,4 @@
-.parent{
+.container{
 
 
     display: inline-flex;
@@ -14,9 +14,13 @@ h1, p{
 }
 
 
-.slidecontainer {
+.slidecontainer  {
   width: 70%; /* Width of the outside container */
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.rightsideslidecontainer{
+    margin-bottom: 20px;
 }
 
 

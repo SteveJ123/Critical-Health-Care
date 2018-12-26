@@ -1,5 +1,3 @@
-
-
 var desiredReplacementIncome = document.getElementById('dri');
 var OutofPocketHealthcareExpenses = document.getElementById('ohe');
 var homeModificationExpenses = document.getElementById('hme');
