@@ -48,17 +48,26 @@ rpRange.oninput = function () {
 function calculate() {
 
 
-    let myChart = document.getElementById('myChart').getContext('2d');
+    $('#chart').empty();
+    $('#chart').html('<canvas id="myChart"  width="400" height="400"></canvas>'); // then load chart.
+    var myChart = document.getElementById("myChart").getContext('2d');
+
+
 
     // Global Options
     Chart.defaults.global.defaultFontFamily = 'Lato';
     Chart.defaults.global.defaultFontSize = 18;
     Chart.defaults.global.defaultFontColor = '#777';
 
-    let first = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
+
+
+    let first = 0;
+    let second = 0;
+    first = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
         Number(homeModificationExpenses.value) + Number(medicalHomecareExpenses.value)) - Number(otherExpenses.value);
-    let second = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
+    second = (Number(desiredReplacementIncome.value) + Number(OutofPocketHealthcareExpenses.value) +
         Number(homeModificationExpenses.value)) * 1.2 / Number(recoveryPeriod.value);
+
 
     let massPopChart = new Chart(myChart, {
         type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -85,6 +94,10 @@ function calculate() {
 
     });
 }
+
+
+calculate();        //to create chart on page load
+
 
 
 
